@@ -1,18 +1,16 @@
 import Head from "next/head";
-import { GetStaticPropsContext, GetStaticPropsResult, PreviewData } from "next";
-import { DrupalNode, DrupalMenuLinkContent } from "next-drupal";
+import { GetStaticPropsResult } from "next";
+import { DrupalNode } from "next-drupal";
 
 import { drupal } from "../lib/drupal";
 import { Layout } from "../components/layout";
 import { NodeProjectTeaser } from "../components/node--project--teaser";
-import { ParsedUrlQuery } from "querystring";
 
 interface IndexPageProps {
   nodes: DrupalNode[];
-  menu: DrupalMenuLinkContent[];
 }
 
-export default function IndexPage({ nodes, menu }: IndexPageProps) {
+export default function IndexPage({ nodes }: IndexPageProps) {
   return (
     <Layout>
       <Head>
@@ -45,7 +43,7 @@ export default function IndexPage({ nodes, menu }: IndexPageProps) {
 }
 
 export async function getStaticProps(
-  context: GetStaticPropsContext<ParsedUrlQuery, PreviewData>
+  context
 ): Promise<GetStaticPropsResult<IndexPageProps>> {
   const nodes = await drupal.getResourceCollectionFromContext<DrupalNode[]>(
     "node--project",
@@ -61,12 +59,9 @@ export async function getStaticProps(
     }
   );
 
-  const menu = await drupal.getMenu("main");
-
   return {
     props: {
       nodes,
-      menu: menu.tree,
     },
   };
 }

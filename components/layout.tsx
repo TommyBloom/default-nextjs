@@ -7,7 +7,7 @@ import { Dialog } from "@headlessui/react";
 
 import Image from "next/image";
 
-import logo from "/public/logo-waterdrop.webp";
+import logo from "../public/logo-waterdrop.webp";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -17,7 +17,7 @@ const navigation = [
   { name: "Resources", href: "#" },
 ];
 
-import { PreviewAlert } from "components/preview-alert";
+import { PreviewAlert } from "./preview-alert";
 
 export function Layout({ children }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
