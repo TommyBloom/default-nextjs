@@ -68,6 +68,7 @@ export async function getStaticProps(
     };
   } catch (error) {
     console.error(error);
+    console.error("Error fetching nodes");
     // Return an empty props object to indicate an error occurred
     return {
       props: {
