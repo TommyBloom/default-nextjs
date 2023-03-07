@@ -46,23 +46,33 @@ export default function IndexPage({ nodes }: IndexPageProps) {
 export async function getStaticProps(
   context: GetStaticPropsContext<ParsedUrlQuery, PreviewData>
 ): Promise<GetStaticPropsResult<IndexPageProps>> {
-  const nodes = await drupal.getResourceCollectionFromContext<DrupalNode[]>(
-    "node--project",
-    context,
-    {
-      params: {
-        "filter[status]": 1,
-        "fields[node--project]":
-          "title,path,field_teaser_image,body,uid,created",
-        include: "field_teaser_image.field_media_image,uid",
-        "fields[file--file]": "uri,url,image_style_uri",
-      },
-    }
-  );
+  try {
+    const nodes = await drupal.getResourceCollectionFromContext<DrupalNode[]>(
+      "node--project",
+      context,
+      {
+        params: {
+          "filter[status]": 1,
+          "fields[node--project]":
+            "title,path,field_teaser_image,body,uid,created",
+          include: "field_teaser_image.field_media_image,uid",
+          "fields[file--file]": "uri,url,image_style_uri",
+        },
+      }
+    );
 
-  return {
-    props: {
-      nodes,
-    },
-  };
+    return {
+      props: {
+        nodes,
+      },
+    };
+  } catch (error) {
+    console.error(error);
+    // Return an empty props object to indicate an error occurred
+    return {
+      props: {
+        nodes: [],
+      },
+    };
+  }
 }
