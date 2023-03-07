@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 import { Dialog } from "@headlessui/react";
+import React, { ReactNode } from "react";
 
 import Image from "next/image";
 
@@ -19,7 +20,11 @@ const navigation = [
 
 import { PreviewAlert } from "./preview-alert";
 
-export function Layout({ children }) {
+interface Props {
+  children: ReactNode[];
+}
+
+export function Layout({ children }: Props) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (

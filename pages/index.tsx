@@ -1,10 +1,11 @@
 import Head from "next/head";
-import { GetStaticPropsResult } from "next";
+import { GetStaticPropsContext, GetStaticPropsResult, PreviewData } from "next";
 import { DrupalNode } from "next-drupal";
 
 import { drupal } from "../lib/drupal";
 import { Layout } from "../components/layout";
 import { NodeProjectTeaser } from "../components/node--project--teaser";
+import { ParsedUrlQuery } from "querystring";
 
 interface IndexPageProps {
   nodes: DrupalNode[];
@@ -43,7 +44,7 @@ export default function IndexPage({ nodes }: IndexPageProps) {
 }
 
 export async function getStaticProps(
-  context
+  context: GetStaticPropsContext<ParsedUrlQuery, PreviewData>
 ): Promise<GetStaticPropsResult<IndexPageProps>> {
   const nodes = await drupal.getResourceCollectionFromContext<DrupalNode[]>(
     "node--project",
