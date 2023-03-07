@@ -43,7 +43,7 @@ export default function IndexPage({ nodes }: IndexPageProps) {
   );
 }
 
-export async function getStaticProps(
+export async function getServerSideProps(
   context: GetStaticPropsContext<ParsedUrlQuery, PreviewData>
 ): Promise<GetStaticPropsResult<IndexPageProps>> {
   const nodes = await drupal.getResourceCollectionFromContext<DrupalNode[]>(
@@ -66,7 +66,3 @@ export async function getStaticProps(
     },
   };
 }
-
-export const config = {
-  runtime: "experimental-edge",
-};
