@@ -1,6 +1,4 @@
 import Head from "next/head";
-import { GetStaticPropsContext, GetStaticPropsResult, PreviewData } from "next";
-import { ParsedUrlQuery } from "querystring";
 
 interface IndexPageProps {
   test: string;
@@ -23,9 +21,7 @@ export default function IndexPage({ test }: IndexPageProps) {
   );
 }
 
-export async function getStaticProps(
-  context: GetStaticPropsContext<ParsedUrlQuery, PreviewData>
-) {
+export async function getStaticProps() {
   return {
     props: {
       test: "test",
