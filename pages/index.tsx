@@ -6,10 +6,10 @@ import { drupal } from "../lib/drupal";
 import { ParsedUrlQuery } from "querystring";
 
 interface IndexPageProps {
-  nodes: DrupalNode[];
+  test: string;
 }
 
-export default function IndexPage({ nodes }: IndexPageProps) {
+export default function IndexPage({ test }: IndexPageProps) {
   return (
     <>
       <Head>
@@ -44,34 +44,23 @@ export default function IndexPage({ nodes }: IndexPageProps) {
 export async function getStaticProps(
   context: GetStaticPropsContext<ParsedUrlQuery, PreviewData>
 ): Promise<GetStaticPropsResult<IndexPageProps>> {
-  try {
-    const nodes = await drupal.getResourceCollectionFromContext<DrupalNode[]>(
-      "node--project",
-      context,
-      {
-        params: {
-          "filter[status]": 1,
-          "fields[node--project]":
-            "title,path,field_teaser_image,body,uid,created",
-          include: "field_teaser_image.field_media_image,uid",
-          "fields[file--file]": "uri,url,image_style_uri",
-        },
-      }
-    );
+  // const nodes = await drupal.getResourceCollectionFromContext<DrupalNode[]>(
+  //   "node--project",
+  //   context,
+  //   {
+  //     params: {
+  //       "filter[status]": 1,
+  //       "fields[node--project]":
+  //         "title,path,field_teaser_image,body,uid,created",
+  //       include: "field_teaser_image.field_media_image,uid",
+  //       "fields[file--file]": "uri,url,image_style_uri",
+  //     },
+  //   }
+  // );
 
-    return {
-      props: {
-        nodes,
-      },
-    };
-  } catch (error) {
-    console.error(error);
-    console.error("Error fetching nodes");
-    // Return an empty props object to indicate an error occurred
-    return {
-      props: {
-        nodes: [],
-      },
-    };
-  }
+  return {
+    props: {
+      test: "test",
+    },
+  };
 }
