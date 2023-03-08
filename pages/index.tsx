@@ -16,9 +16,3 @@ export default function IndexPage() {
     </>
   );
 }
-
-export async function getStaticProps() {
-  return {
-    props: {},
-  };
-}
