@@ -5,7 +5,7 @@ const nextConfig = {
   },
   reactStrictMode: true,
   experimental: {
-    runtime: "experimental-edge",
+    runtime: "edge",
   },
 };
 
