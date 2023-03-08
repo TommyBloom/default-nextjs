@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { DrupalNode } from "next-drupal";
 
@@ -12,13 +11,11 @@ export function NodeProjectTeaser({ node, ...props }: NodeProjectTeaserProps) {
       {node.field_teaser_image.field_media_image.image_style_uri
         .wepp_preview && (
         <figure className="my-4">
-          <Image
+          <img
             src={
               node.field_teaser_image.field_media_image.image_style_uri
                 .wepp_preview
             }
-            width={300}
-            height={225}
             alt={
               node.field_teaser_image.field_media_image.resourceIdObjMeta.alt
             }
