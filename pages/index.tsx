@@ -1,11 +1,6 @@
 import Head from "next/head";
-import { DrupalNode } from "next-drupal";
 
-interface IndexPageProps {
-  nodes: DrupalNode[];
-}
-
-export default function IndexPage({ nodes }: IndexPageProps) {
+export default function IndexPage() {
   return (
     <>
       <Head>
