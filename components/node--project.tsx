@@ -1,9 +1,7 @@
 import { DrupalNode } from "next-drupal";
-import BannerImage from "components/bannerimage";
+import BannerImage from "@/components/bannerimage";
 
-import Image from "next/image";
-
-import Gallery from "components/gallery";
+import Gallery from "@/components/gallery";
 
 import React from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
@@ -88,7 +86,7 @@ export function NodeProject({ node, ...props }: NodeProjectProps) {
                 {node.field_guiding_principles.map((principle) => (
                   <div key={principle.id}>
                     <div className="float-left mr-2">
-                      <Image
+                      <img
                         src={
                           principle.field_principle_logo.field_media_image
                             .image_style_uri.webp

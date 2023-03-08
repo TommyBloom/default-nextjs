@@ -9,6 +9,8 @@ import Image from "next/image";
 
 import logo from "/public/logo-waterdrop.webp";
 
+import { PreviewAlert } from "@/components/preview-alert";
+
 const navigation = [
   { name: "Home", href: "/" },
   { name: "Projects", href: "/projects" },
@@ -16,8 +18,6 @@ const navigation = [
   { name: "About The Strategy", href: "#" },
   { name: "Resources", href: "#" },
 ];
-
-import { PreviewAlert } from "components/preview-alert";
 
 export function Layout({ children }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
