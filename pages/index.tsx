@@ -3,8 +3,6 @@ import { GetStaticPropsContext, GetStaticPropsResult, PreviewData } from "next";
 import { DrupalNode } from "next-drupal";
 
 import { drupal } from "../lib/drupal";
-import { Layout } from "../components/layout";
-import { NodeProjectTeaser } from "../components/node--project--teaser";
 import { ParsedUrlQuery } from "querystring";
 
 interface IndexPageProps {
