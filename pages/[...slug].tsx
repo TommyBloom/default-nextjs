@@ -2,10 +2,10 @@ import { GetStaticPathsResult, GetStaticPropsResult } from "next";
 import Head from "next/head";
 import { DrupalNode } from "next-drupal";
 
-import { drupal } from "lib/drupal";
-import { NodeBasicPage } from "components/node--basic-page";
-import { NodeProject } from "components/node--project";
-import { Layout } from "components/layout";
+import { drupal } from "@/lib/drupal";
+import { NodeBasicPage } from "@/components/node--basic-page";
+import { NodeProject } from "@/components/node--project";
+import { Layout } from "@/components/layout";
 
 import { DrupalJsonApiParams } from "drupal-jsonapi-params";
 
