@@ -1,10 +1,5 @@
 import Head from "next/head";
-import { GetStaticPropsContext, GetStaticPropsResult, PreviewData } from "next";
 import { DrupalNode } from "next-drupal";
-
-import { drupal } from "../lib/drupal";
-
-import { ParsedUrlQuery } from "querystring";
 
 interface IndexPageProps {
   nodes: DrupalNode[];
@@ -22,7 +17,7 @@ export default function IndexPage({ nodes }: IndexPageProps) {
       </Head>
       <div>
         <h1 className="mb-10 text-6xl font-black">Latest Articles.</h1>
-        {nodes?.length ? (
+        {/* {nodes?.length ? (
           nodes.map((node) => (
             <div key={node.id}>
               <h2 className="mb-4 text-4xl font-bold">
@@ -35,30 +30,14 @@ export default function IndexPage({ nodes }: IndexPageProps) {
           ))
         ) : (
           <p className="py-4">No nodes found</p>
-        )}
+        )} */}
       </div>
     </>
   );
 }
 
 export async function getStaticProps(context) {
-  const nodes = await drupal.getResourceCollectionFromContext<DrupalNode[]>(
-    "node--project",
-    context,
-    {
-      params: {
-        "filter[status]": 1,
-        "fields[node--project]":
-          "title,path,field_teaser_image,body,uid,created",
-        include: "field_teaser_image.field_media_image,uid",
-        "fields[file--file]": "uri,url,image_style_uri",
-      },
-    }
-  );
-
   return {
-    props: {
-      nodes,
-    },
+    props: {},
   };
 }
