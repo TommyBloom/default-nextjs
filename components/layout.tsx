@@ -11,6 +11,8 @@ import logo from "/public/logo-waterdrop.webp";
 
 import { PreviewAlert } from "@/components/preview-alert";
 
+import React, { ReactNode } from "react";
+
 const navigation = [
   { name: "Home", href: "/" },
   { name: "Projects", href: "/projects" },
@@ -19,7 +21,12 @@ const navigation = [
   { name: "Resources", href: "#" },
 ];
 
-export function Layout({ children }) {
+interface Props {
+  children?: ReactNode;
+  // any props that come into the component
+}
+
+export function Layout({ children }: Props) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
