@@ -17,7 +17,7 @@ export default function IndexPage() {
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   return {
     props: {},
   };
