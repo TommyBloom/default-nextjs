@@ -4,6 +4,7 @@ import { DrupalNode } from "next-drupal";
 
 import { drupal } from "../lib/drupal";
 import { ParsedUrlQuery } from "querystring";
+import { NodeProjectTeaser } from "../components/node--project--teaser";
 
 interface IndexPageProps {
   nodes: DrupalNode[];
@@ -30,6 +31,7 @@ export default function IndexPage({ nodes }: IndexPageProps) {
 
               <div dangerouslySetInnerHTML={{ __html: node.body.processed }} />
               <hr className="my-20" />
+              <NodeProjectTeaser node={node} />
             </div>
           ))
         ) : (
