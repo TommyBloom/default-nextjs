@@ -17,7 +17,19 @@ const customFetcher = (
   return fetch(url, {
     ...opts,
     // Pass in additional options. Example: agent.
-  });
+  })
+    .then((response) => {
+      // Check for HTTP errors
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
+      return response;
+    })
+    .catch((error) => {
+      // Handle the error
+      console.error("Error making request:", error);
+      throw error;
+    });
 };
 
 // Pass the custom fetcher to the client.
