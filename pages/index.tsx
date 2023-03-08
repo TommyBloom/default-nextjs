@@ -1,10 +1,6 @@
 import Head from "next/head";
 
-interface IndexPageProps {
-  test: string;
-}
-
-export default function IndexPage({ test }: IndexPageProps) {
+export default function IndexPage() {
   return (
     <>
       <Head>
@@ -23,8 +19,6 @@ export default function IndexPage({ test }: IndexPageProps) {
 
 export async function getStaticProps() {
   return {
-    props: {
-      test: "test",
-    },
+    props: {},
   };
 }
